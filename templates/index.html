@@ -1,0 +1,24 @@
+<form action="" method="POST">
+	{% csrf_token %}
+	<input type="text" name="name_artist">
+	<button type="submit">Send</button>
+</form>
+
+<br>
+
+{% if artist %}
+This Is 20 Best Songs For {{artist}} : <hr>
+{% endif %}
+
+<div style="width: 50%">
+	{% if songs|length > 0 and posted == 1 %}
+	{% for i,x in songs.items %}
+		{{i}} : <a href="{{x}}" target="_blank">Play ></a> <br>
+	{% endfor %}
+	{% elif songs|length == 0 and posted == 1 %}
+
+	<h2>Can't Find Anything</h2>
+
+	{% endif %}
+</div>
+
